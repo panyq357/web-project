@@ -25,6 +25,13 @@ public class Result {
         this.data = data;
     }
 
+    public static Result success(String message, Object data) {
+        Result res = new Result();
+        res.setCode(200);
+        res.setMessage(message);
+        res.setData(data);
+        return res;
+    }
     public static Result success(String message) {
         Result res = new Result();
         res.setCode(200);
