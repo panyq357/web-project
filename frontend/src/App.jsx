@@ -1,14 +1,15 @@
-import { useState } from 'react'
-
+import useUserStore from './store/useUserStore'
 import Login from './components/Login'
 import Logout from './components/Logout'
 
 function App() {
-  const [token, setToken] = useState(()=>{return localStorage.getItem("jwtToken")})
+
+  const { token } = useUserStore()
+
   if (token === null) {
-    return <Login onTokenChange={setToken} />
+    return <Login />
   } else {
-    return <Logout token={token} onTokenChange={setToken} />
+    return <Logout />
   }
 }
 

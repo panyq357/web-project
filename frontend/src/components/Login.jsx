@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
+import useUserStore from '../store/useUserStore'
 
-function Login({ onTokenChange }) {
+function Login() {
+  const { setUserStore } = useUserStore()
+
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
@@ -21,7 +24,7 @@ function Login({ onTokenChange }) {
       })
       if (response.data.code === 200) {
         localStorage.setItem("jwtToken", response.data.data)
-        onTokenChange(response.data.data)
+        setUserStore(response.data.data)
       }
     })
     .catch(error => {

@@ -1,18 +1,13 @@
-function Logout({ token, onTokenChange }) {
-  
-  function getUsername() {
-    const payload = JSON.parse(atob(token.split(".")[1]))
-    return payload.username
-  }
+import useUserStore from '../store/useUserStore'
 
-  function handleLogout () {
-    localStorage.removeItem("jwtToken")
-    onTokenChange(null)
-  }
+function Logout() {
+
+  const { username, logout } = useUserStore()
+  
   return (
     <>
-      <span>User {getUsername()} logged in. </span>
-      <button onClick={handleLogout}>Logout</button>
+      <span>User {username} logged in. </span>
+      <button onClick={logout}>Logout</button>
     </>
   )
 }
