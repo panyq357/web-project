@@ -11,7 +11,7 @@ import cn.ac.panlab.backend.model.User;
 import cn.ac.panlab.backend.service.UserService;
 
 @RestController
-@CrossOrigin("http://localhost:8000/")
+@CrossOrigin("${app.frontend.url}")
 public class LoginController {
 
     @Autowired
