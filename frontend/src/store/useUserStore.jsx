@@ -11,6 +11,7 @@ function parseJwt(token) {
 }
 
 const useUserStore = create((set) => {
+
   const token = localStorage.getItem("jwtToken")
   const payload = parseJwt(token)
   const username = payload?.username ?? null

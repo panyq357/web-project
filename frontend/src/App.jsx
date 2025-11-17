@@ -1,16 +1,15 @@
 import useUserStore from './store/useUserStore'
-import Login from './components/Login'
-import Logout from './components/Logout'
+
+import { Outlet, Navigate } from 'react-router-dom'
 
 function App() {
 
   const { token } = useUserStore()
 
   if (token === null) {
-    return <Login />
-  } else {
-    return <Logout />
+    return <Navigate to="login" replace />
   }
+  return <Outlet />
 }
 
 export default App

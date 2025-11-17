@@ -1,4 +1,4 @@
-package cn.ac.panlab.backend.model.filter;
+package cn.ac.panlab.backend.filter;
 
 import java.io.IOException;
 
