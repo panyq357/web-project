@@ -1,18 +1,15 @@
-package cn.ac.panlab.backend.model;
+package cn.ac.panlab.backend.dto;
 
-public class User {
+import jakarta.validation.constraints.NotBlank;
 
-    private Long id;
+public class LoginDTO {
+
+    @NotBlank
     private String username;
-    private String password;
-    private String email;
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @NotBlank
+    private String password;
+
     public String getUsername() {
         return username;
     }
@@ -24,11 +21,5 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

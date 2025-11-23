@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
 @Component
@@ -28,7 +29,7 @@ public class JwtUtil {
             .compact();
     }
 
-    public Map<String, Object> parseToken(String token) {
+    public Claims parseToken(String token) {
         return Jwts.parser()
             .verifyWith(jwtKey)
             .build()

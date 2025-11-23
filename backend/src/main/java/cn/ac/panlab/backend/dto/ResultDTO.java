@@ -1,6 +1,6 @@
-package cn.ac.panlab.backend.model;
+package cn.ac.panlab.backend.dto;
 
-public class Result {
+public class ResultDTO {
 
     private int code;
     private String message;
@@ -25,27 +25,28 @@ public class Result {
         this.data = data;
     }
 
-    public static Result success(String message, Object data) {
-        Result res = new Result();
+    public static ResultDTO success(String message, Object data) {
+        ResultDTO res = new ResultDTO();
         res.setCode(200);
         res.setMessage(message);
         res.setData(data);
         return res;
     }
-    public static Result success(String message) {
-        Result res = new Result();
+    public static ResultDTO success(String message) {
+        ResultDTO res = new ResultDTO();
         res.setCode(200);
         res.setMessage(message);
         return res;
     }
-    public static Result success() {
-        Result res = new Result();
+    public static ResultDTO success() {
+        ResultDTO res = new ResultDTO();
         res.setCode(200);
+        res.setMessage("Operation Success");
         return res;
     }
 
-    public static Result failure(String message) {
-        Result res = new Result();
+    public static ResultDTO failure(String message) {
+        ResultDTO res = new ResultDTO();
         res.setCode(400);
         res.setMessage(message);
         return res;

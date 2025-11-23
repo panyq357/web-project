@@ -1,18 +1,11 @@
-package cn.ac.panlab.backend.model;
+package cn.ac.panlab.backend.dto;
 
-public class User {
+public class RegisterDTO {
 
-    private Long id;
     private String username;
     private String password;
     private String email;
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getUsername() {
         return username;
     }
@@ -32,3 +25,4 @@ public class User {
         this.email = email;
     }
 }
+

@@ -1,6 +1,8 @@
 import useUserStore from './store/useUserStore'
-
-import { Outlet, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import Logout from './components/Logout'
+import NewTodo from './components/NewTodo'
+import ShowTodoList from './components/ShowTodoList'
 
 function App() {
 
@@ -9,7 +11,17 @@ function App() {
   if (token === null) {
     return <Navigate to="login" replace />
   }
-  return <Outlet />
+  return(<>
+    <div>
+      <Logout />
+    </div>
+    <div>
+      <NewTodo />
+    </div>
+    <div>
+      <ShowTodoList />
+    </div>
+  </>)
 }
 
 export default App

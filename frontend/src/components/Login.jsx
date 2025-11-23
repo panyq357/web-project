@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import useUserStore from '../store/useUserStore'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
   const { setUserStore } = useUserStore()
@@ -10,6 +11,7 @@ function Login() {
 
   const [status, setStatus] = useState({code: 200, message: ""})
 
+  const navigate = useNavigate()
 
   function handleLogin(e) {
     e.preventDefault()
@@ -25,6 +27,10 @@ function Login() {
       if (response.data.code === 200) {
         localStorage.setItem("jwtToken", response.data.data)
         setUserStore(response.data.data)
+
+        setTimeout(()=> {
+          navigate("/")
+        }, 2000)
       }
     })
     .catch(error => {
@@ -53,7 +59,8 @@ function Login() {
             <input type="password" id="password" value={password} onInput={(e)=>setPassword(e.target.value)} required />
           </div>
           <div>
-          <button type="submit" onClick={handleLogin}>Submit</button>
+          <button type="submit" onClick={handleLogin}>Submit</button> {" "}
+          <button type="button"  onClick={()=>navigate("/register")}>Register</button>
           <span style={status.code == 200 ? {color: "green"} : {color: "red"}}> {status.message}</span>
           </div>
         </fieldset>

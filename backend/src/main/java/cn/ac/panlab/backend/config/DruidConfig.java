@@ -13,7 +13,7 @@ public class DruidConfig {
         DruidDataSource dataSource = new DruidDataSource();
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/demo");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/todo_app");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
 
