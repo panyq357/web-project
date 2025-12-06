@@ -1,9 +1,16 @@
 package cn.ac.panlab.backend.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class RegisterDTO {
 
+    @NotBlank
     private String username;
+
+    @NotBlank
     private String password;
+
+    @NotBlank
     private String email;
 
     public String getUsername() {

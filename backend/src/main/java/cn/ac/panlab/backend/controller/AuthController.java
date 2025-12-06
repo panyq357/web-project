@@ -11,6 +11,7 @@ import cn.ac.panlab.backend.dto.RegisterDTO;
 import cn.ac.panlab.backend.dto.ResultDTO;
 import cn.ac.panlab.backend.exception.AuthException;
 import cn.ac.panlab.backend.service.AuthService;
+import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin("${app.frontend.url}")
@@ -20,14 +21,14 @@ public class AuthController {
     AuthService authService;
 
     @PostMapping("/login")
-    public ResultDTO login(@RequestBody LoginDTO dto) throws AuthException {
+    public ResultDTO login(@Valid @RequestBody LoginDTO dto) throws AuthException {
 
         String token = authService.login(dto);
         return ResultDTO.success("Login complete.", token);
     }
 
     @PostMapping("/register")
-    public ResultDTO register(@RequestBody RegisterDTO dto) throws AuthException {
+    public ResultDTO register(@Valid @RequestBody RegisterDTO dto) throws AuthException {
 
         authService.register(dto);
         return ResultDTO.success("Registration complete.");

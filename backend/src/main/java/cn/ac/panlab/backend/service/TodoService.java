@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import cn.ac.panlab.backend.context.UserContext;
-import cn.ac.panlab.backend.dto.TodoDTO;
+import cn.ac.panlab.backend.dto.CreateTodoDTO;
+import cn.ac.panlab.backend.dto.UpdateTodoDTO;
 import cn.ac.panlab.backend.exception.TodoException;
 import cn.ac.panlab.backend.mapper.TodoMapper;
 import cn.ac.panlab.backend.model.Todo;
@@ -19,7 +20,7 @@ public class TodoService {
     @Autowired
     private TodoMapper todoMapper;
 
-    public Long createTodo(TodoDTO dto) throws TodoException {
+    public Long createTodo(CreateTodoDTO dto) throws TodoException {
 
         User user = UserContext.get();
 
@@ -68,5 +69,30 @@ public class TodoService {
         User user = UserContext.get();
 
         return getTodoListByUserId(user.getId());
+    }
+
+    public void updateTodo(UpdateTodoDTO dto) throws TodoException {
+
+        Todo oldTodo = todoMapper.getTodoById(dto.getId());
+
+        if (oldTodo == null) {
+            throw new TodoException("Todo requested to update not found.");
+        }
+
+        User user = UserContext.get();
+
+        if (user == null || !user.getId().equals(oldTodo.getUserId())) {
+            throw new TodoException("You can only update your todo");
+        }
+
+        Todo todo = new Todo();
+        todo.setId(dto.getId());
+        todo.setMessage(dto.getMessage());
+
+        try {
+            todoMapper.updateTodo(todo);
+        } catch (Exception e) {
+            throw new TodoException(e.getMessage());
+        }
     }
 }

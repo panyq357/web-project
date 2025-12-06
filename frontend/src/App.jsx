@@ -2,7 +2,7 @@ import useUserStore from './store/useUserStore'
 import { Navigate } from 'react-router-dom'
 import Logout from './components/Logout'
 import NewTodo from './components/NewTodo'
-import ShowTodoList from './components/ShowTodoList'
+import TodoList from './components/TodoList'
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
       <NewTodo />
     </div>
     <div>
-      <ShowTodoList />
+      <TodoList />
     </div>
   </>)
 }
